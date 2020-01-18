@@ -14,7 +14,7 @@ def check_singular(matrix):
         :return: determinant of matrix
     """
     det = np.linalg.det(matrix)
-    return round(det)
+    return int(det)
 
 
 if __name__ == "__main__":
