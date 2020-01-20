@@ -8,6 +8,7 @@ class SingularityTest(unittest.TestCase):
         self.assertEqual(True, singularity.singularity_check(matrix))
 
 
+
     #test for checking singularity of matrix of dimension 2x2
     def test_order_2(self):
         matrix = [[2,1],\
