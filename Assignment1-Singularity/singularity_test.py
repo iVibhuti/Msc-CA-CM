@@ -27,5 +27,7 @@ class SingularityTest(unittest.TestCase):
         matrix = [[2,2,4],\
                   [1,3,7]]
         self.assertEqual(True, singularity.singularity_check(matrix))
+
+
 if __name__ == '__main__':
     unittest.main()
