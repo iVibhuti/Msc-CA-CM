@@ -1,6 +1,6 @@
 import unittest
 
-from Pavan import isSingular,calculateDeterminant,formTempMatrix
+from assignemnt1 import isSingular,calculateDeterminant,formTempMatrix
 
 
 
