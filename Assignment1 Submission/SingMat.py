@@ -22,7 +22,7 @@ def matrix(l):
 
 
 if __name__ == '__main__':
-    f = open('text', 'r')
+    f = open('inputfile', 'r')
     l = [[int(num) for num in line.split(',')] for line in f]
     print(l)
     matrix(l)
