@@ -3,6 +3,11 @@
 
 """A python file which calculates determinant of a n*n matrix
    Uses Recursion to calculate the determinant
+
+   Author: Yash Dave
+   email: mail2ypd@gmail.com
+   PRN: 19030142011
+   Batch: MSc CA 2019-21 @ SICSR
 """
 
 
