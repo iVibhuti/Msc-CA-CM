@@ -4,6 +4,11 @@
 """Test file for main.py
    Checks various inputs and verifies if results are
    correct or not.
+
+   Author: Yash Dave
+   email: mail2ypd@gmail.com
+   PRN: 19030142011
+   Batch: MSc CA 2019-21 @ SICSR
 """
 
 import unittest
