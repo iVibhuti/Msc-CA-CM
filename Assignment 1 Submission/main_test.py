@@ -12,8 +12,9 @@
 """
 
 import unittest
+from unittest.mock import patch
 
-from main import find_determinant
+from main import find_determinant, row_input
 
 
 class TestSingularMatrixChecker(unittest.TestCase):
@@ -52,6 +53,11 @@ class TestSingularMatrixChecker(unittest.TestCase):
                   [9, 10, 11, 12],
                   [13, 14, 15, 16]]
         self.assertTrue(find_determinant(matrix) == 0)
+
+    def test_row_input_value_error(self):
+        with patch('builtins.input', return_value='asndj dsaij dasnj'):
+            self.assertEqual('ValueError raised', row_input(3, 3,
+                                                            test_flag=True))
 
 
 if __name__ == '__main__':
