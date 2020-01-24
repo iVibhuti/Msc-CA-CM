@@ -11,7 +11,8 @@
 """
 
 
-def find_determinant(matrix: list) -> int:  # Calcuates determinant
+# Calcuates determinant
+def find_determinant(matrix: list) -> int:
     matrix_dim = len(matrix)
     if matrix_dim == 1:
         return matrix[0][0]
@@ -37,17 +38,26 @@ def find_determinant(matrix: list) -> int:  # Calcuates determinant
         return (matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0])
 
 
-def row_input(row_num: int, cols: int) -> list:  # Reads a matrix row from user
-    row_string = input("Enter values in row %d separated by spaces: " %
-                       (row_num + 1))
-    row_arr = row_string.split()
-    if len(row_arr) is cols:
-        row_arr = [int(i) for i in row_arr]
-        return row_arr
-    return row_input(row_num, cols)
+# Reads a matrix row from user
+def row_input(row_num: int, cols: int, test_flag: bool = False) -> list:
+    try:
+        row_string = input("Enter values in row %d separated by spaces: " %
+                           (row_num + 1))
+        row_arr = row_string.split()
+        if len(row_arr) is cols:
+            row_arr = [int(i) for i in row_arr]
+            return row_arr
+        return row_input(row_num, cols)
+    except ValueError:
+        if test_flag is True:
+            return 'ValueError raised'
+        print('Invalid input, please enter %d numbers separated by whitespaces'
+              % cols)
+        return row_input(row_num, cols)
 
 
-def input_sq_matrix(rows: int, cols: int) -> list:  # Forms a 2D square matrix
+# Forms a 2D square matrix
+def input_sq_matrix(rows: int, cols: int) -> list:
     matrix = list()
     for i in range(rows):
         matrix.append(row_input(i, cols))
@@ -56,13 +66,23 @@ def input_sq_matrix(rows: int, cols: int) -> list:  # Forms a 2D square matrix
 
 
 if __name__ == "__main__":
-    rows = int(input("Enter number of rows & cols in square matrix: "))
-    cols = rows
-    matrix = input_sq_matrix(rows, cols)
-    determinant = 0
-    determinant = find_determinant(matrix)
-    print("Determinant:", determinant)
-    if determinant == 0:
-        print("Matrix is Singular")
-    else:
-        print("Matrix is Non-Singular")
+    flag = True
+    while flag:
+        try:
+            rows = int(input("Enter number of rows & cols in square matrix: "))
+            cols = rows
+            matrix = input_sq_matrix(rows, cols)
+            determinant = 0
+            determinant = find_determinant(matrix)
+            print("Determinant:", determinant)
+            if determinant == 0:
+                print("Matrix is Singular")
+            else:
+                print("Matrix is Non-Singular")
+            flag = False
+        except ValueError:
+            flag = True
+            print("Invalid input, enter a number without any whitespaces.")
+        except KeyboardInterrupt:
+            flag = False
+            print("Bye bye...")
