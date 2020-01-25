@@ -1,22 +1,32 @@
-import numpy as np
+def det(mat, count=0):
+    index = list(range(len(mat)))
+
+    if len(mat) == 2 and len(mat[0]) == 2:
+        val = mat[0][0] * mat[1][1] - mat[1][0] * mat[0][1]
+        return val
+
+    for col in index:
+        second = mat.copy()
+        second = second[1:]
+        row = len(second)
+
+        for i in range(row):
+            second[i] = second[i][0:col] + second[i][col + 1:]
+
+        notation = (-1) ** (col % 2)  # F)
+
+        sub_det = det(second)
+
+        count += notation * mat[0][col] * sub_det
+
+    return count
 
 
-def rows_cols(ro, colm):
-    simple = []
-    print("enter the value to add in to the given matrics data will be enterd row wise")
-    for i in range(ro):
-        value1 = []
-        for j in range(colm):
-            value1.append(int(input()))
-        simple.append(value1)
-    for i in range(ro):
-        for j in range(colm):
-            print(simple[i][j], end=" ")
-        print()
-    print(np.linalg.det(simple))
-    if np.linalg.det(simple) == 0:
-        print("it is singular")
+def singular(matrix):
+    if det(matrix) == 0:
+        print("is singular")
+        return True
     else:
-        print("non-singular")
-
+        print("it is not a singular matrix")
+        return False
 
