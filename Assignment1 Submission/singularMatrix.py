@@ -107,7 +107,7 @@ def determinant_recursive(A, total=0):
 
 
 if __name__ == "__main__":
-    file_input = input("Enter the file path : ")
+    file_input = input("Enter the file name with path : ")
     matrix = read_matrix(file_input)
     if check_squareness(matrix) is True:
         if determinant_recursive(matrix) == 0:
