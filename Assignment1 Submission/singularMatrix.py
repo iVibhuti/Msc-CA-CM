@@ -6,6 +6,34 @@ Desc : Python program to show if a matrix is singular or non singular.
 """
 
 
+def read_matrix(file_path):
+    """
+    Read the integer from the file and store it in a 2D array.
+        :param file_path: full path of the file
+        :return: 2D array
+    """
+    try:
+        with open(file_path) as file:
+            array = []
+            for line in file:
+                array.append([int(x) for x in line.split()])  #
+        return array
+
+    except Exception:
+        raise Exception("File Error")
+
+
+def check_squareness(A):
+    """
+    Makes sure that a matrix is square
+        :param A: The matrix to be checked.
+    """
+    if len(A) != len(A[0]):
+        raise ArithmeticError("Matrix must be square.")
+    else:
+        return True
+
+
 def zeros_matrix(rows, cols):
     """
     Creates a matrix filled with zeros.
@@ -50,7 +78,6 @@ def determinant_recursive(A, total=0):
             :param total=0: safely establish a total at each recursion level
             :returns: the running total for the levels of recursion
     """
-
     # store indices in list for row referencing
     indices = list(range(len(A)))
 
@@ -70,7 +97,7 @@ def determinant_recursive(A, total=0):
             # for each remaining row of sub-matrix remove the focus column elements
             As[i] = As[i][0:fc] + As[i][fc + 1:]
 
-        sign = (-1) ** (fc % 2)  # F)
+        sign = (-1) ** (fc % 2)
         # pass sub-matrix recursively
         sub_det = determinant_recursive(As)
         # total all returns from recursion
@@ -80,8 +107,10 @@ def determinant_recursive(A, total=0):
 
 
 if __name__ == "__main__":
-    matrix = [[0, 1], [0, 1]]  # Define the matrix(should be square matrix)
-    if determinant_recursive(matrix) == 0:
-        print("Matrix is Singular")
-    else:
-        print("Matrix is Non-Singular")
+    file_input = input("Enter the file path : ")
+    matrix = read_matrix(file_input)
+    if check_squareness(matrix) is True:
+        if determinant_recursive(matrix) == 0:
+            print("Matrix is Singular")
+        else:
+            print("Matrix is Non-Singular")

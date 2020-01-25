@@ -8,12 +8,11 @@ import unittest
 from singularMatrix import determinant_recursive
 from singularMatrix import copy_of_matrix
 from singularMatrix import zeros_matrix
+from singularMatrix import read_matrix
+from singularMatrix import check_squareness
 
 
 class TestMatrix(unittest.TestCase):
-
-    def test_square_matrix(self):
-        self.assertFalse(determinant_recursive([[1, 2, 3], [3, 2, 1]]))
 
     def test_singular_matrix(self):
         self.assertEqual(determinant_recursive([[0, 1], [0, 1]]), 0)
@@ -26,6 +25,14 @@ class TestMatrix(unittest.TestCase):
     def test_zero_matrix(self):
         self.assertEqual(zeros_matrix(2, 2), [[0, 0], [0, 0]])
         self.assertNotEqual(zeros_matrix(2, 2), [[0, 0], [1, 1]])
+
+    def test_matrix_input(self):
+        self.assertRaises(Exception, read_matrix, "/matrix.txt")
+        self.assertRaises(Exception, read_matrix, "matrix")
+
+    def test_square_matrix(self):
+        self.assertTrue(check_squareness([[0, 1], [0, 1]]))
+        self.assertRaises(ArithmeticError, check_squareness, [[1, 2, 3], [3, 2, 1]])
 
 
 if __name__ == '__main__':
