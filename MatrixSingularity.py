@@ -1,3 +1,5 @@
+#Pooja Naik
+#PRN-19030142019
 def matrix(l):
     det = 0
     if len(l)==2:
