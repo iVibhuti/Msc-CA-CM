@@ -1,7 +1,9 @@
 '''author: shriaas2898
    description: Python file contains function to calculate determinant of matrix
    and a  function to check if the matrix is singular'''
-#for calculating determinant of a matrix
+# for calculating determinant of a matrix
+
+
 def determinant(matrix):
 
         if 1 == len(matrix):
@@ -18,16 +20,33 @@ def determinant(matrix):
         else:
             return det
 
+
 def singularity_check(matrix):
 
-    #for checking if matrix is a square matrix
+    # for checking if matrix is a square matrix
     if len(matrix) != len(matrix[0]):
         NonSquareMatrixExecption = Exception("Supplied matrix is not a square matrix")
         raise NonSquareMatrixExecption
 
         return False
 
-    if  0 == determinant(matrix):
+    if 0 == determinant(matrix):
         return True
     else:
         return False
+
+
+def build_matrix(file_name):
+    file = open(file_name,"r")
+    row,column = file.readline().split(",")
+    if row != column:
+        NonSquareMatrixExecption = Exception("Supplied matrix is not a square matrix")
+        raise NonSquareMatrixExecption
+    else:
+        matrix = []
+        for index in range(0,int(row)):
+            matrix.append(file.readline().split(","))
+
+        return matrix
+if __name__ == '__main__':
+    
