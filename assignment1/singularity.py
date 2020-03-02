@@ -48,5 +48,6 @@ def build_matrix(file_name):
             matrix.append(file.readline().split(","))
 
         return matrix
-if __name__ == '__main__':
-    
+# if __name__ == '__main__':
+
+
