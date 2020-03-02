@@ -24,4 +24,3 @@ def determinant(matrix):
 def transpose(matrix):
     trans = list(map(lambda row: list(row),list(zip(*matrix))))
     return trans
-
