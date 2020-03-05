@@ -39,7 +39,7 @@ def transpose(matrix):
 def inverse_mat(matrix):
 
     if(determinant(matrix)==0):
-        NoInverseException = Exception("Inverse of supplied matrix does not exists.")
+        NoInverseException = Exception("Inverse of supplied matrix does not exists since the determinant is 0.")
         raise NoInverseException
 
     # calculating co-factor
@@ -47,6 +47,7 @@ def inverse_mat(matrix):
     for i in range(len(matrix)):
         row = []
         for j in range(len(matrix[0])):
+            # inserting cofactor of element in place of the element
             row.append((-1)**(i+j+2)*determinant(minor_mat(matrix, i, j)))
         inverse.append(row)
 
