@@ -1,5 +1,5 @@
 import math
-f = open('svdfile', 'r')
+f = open('svd_input_file', 'r')
 basis = [[int(num) for num in line.split(',')] for line in f]
 a = basis[0][0]
 b = basis[0][1]
