@@ -1,3 +1,6 @@
+#Name:Edna Martis
+#PRN:19030142015
+
 import math
 svd_f= open('svdinput', 'r')
 matrix= [[int(num) for num in line.split(',')] for line in svd_f]
