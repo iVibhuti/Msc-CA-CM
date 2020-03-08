@@ -6,14 +6,16 @@
 # for calculating minor of a matrix
 def minor_mat(matrix, i, j):
     minor = matrix[:j] + matrix[j + 1:]
-    print("LOG: minor after j =", minor)
     minor = list(map(lambda lst: lst[:i] + lst[i + 1:], minor))
-    print("LOG: minor after i =", minor)
     return minor
 
 
 # for calculating determinant of a matrix
 def determinant(matrix):
+    if len(matrix) != len(matrix[0]):
+        NonSquareMatrixExecption = Exception("Supplied matrix is not a square matrix")
+        raise NonSquareMatrixExecption
+
     if 1 == len(matrix):
         return matrix[0][0]
 
@@ -39,7 +41,7 @@ def transpose(matrix):
 def inverse_mat(matrix):
 
     if(determinant(matrix)==0):
-        NoInverseException = Exception("Inverse of supplied matrix does not exists since the determinant is 0.")
+        NoInverseException = Exception("Inverse of  matrix: ",matrix," does not exists since the determinant is 0.")
         raise NoInverseException
 
     # calculating co-factor
@@ -72,3 +74,12 @@ def matrix_element_operation(matrix, operand, operation):
         for i in range(len(matrix)):
             for j in range(len(matrix[0])):
                 matrix[i][j] = matrix[i][j] / operand
+
+
+def read_csv(file_name):
+    file = open(file_name,"r")
+    row,column = file.readline().strip().split(",")
+    matrix = []
+    for index in range(0,int(row)):
+        matrix.append(list(map(int,file.readline().split(","))))
+    return matrix
