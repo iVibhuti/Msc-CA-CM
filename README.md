@@ -1,5 +1,7 @@
 # Msc-CA-CM
 
+#First Assignment
+
 The name of the file is taken as user input.
 The format of that file is given below :
 
@@ -9,3 +11,9 @@ The format of that file is given below :
 3rd Line onwards :
 value for the matrix row wise where the values are seperated using space.
 
+#Second Assignment
+
+The name of the file is taken as data.txt.
+The format of that file is given below :
+
+value for the matrix row wise where the values are seperated using space.
