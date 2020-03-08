@@ -1,3 +1,6 @@
+#Author-POOJA NAIK
+#MSC CA
+#PRN-19030142019
 import math
 f = open('svd_input_file', 'r')
 basis = [[int(num) for num in line.split(',')] for line in f]
