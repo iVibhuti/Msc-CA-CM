@@ -85,7 +85,7 @@ def getMatrixInverse(m):
         return [[m[1][1]/determinant, -1*m[0][1]/determinant],
                 [-1*m[1][0]/determinant, m[0][0]/determinant]]
 
-
+#printing inverse of eigenvector matrix
 print("Inverse of Eigenvector Matrix(U-1):",getMatrixInverse(VectMat))
 
 #Obtain the Single Value Decomposition Matrix
