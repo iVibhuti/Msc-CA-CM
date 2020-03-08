@@ -19,7 +19,7 @@ print(eigenvalue1)   #Printing Eigen Values
 print(eigenvalue2)
 #Start Calculating the eigen vector where e is the eigen value1:
 
-e = eigenvalue1
+e = eigenvalue1   #Substituting Eigen Value 1 for EigenVector 1
 x = b
 y = e-a
 r = math.sqrt(x*x+y*y)
@@ -40,7 +40,8 @@ print("Eigenvector1: (", x , "," ,y , ")")
 Vectone=[x,y] 
 print("Eigen vector1:",Vectone)  #Printing EigenVector1
 #Start Calculating the eigen vector where e is the eigen value2:
-e = eigenvalue2
+
+e = eigenvalue2       #Substituting Eigen Value 2 for EigenVector 2
 x = b
 y = e-a
 r = math.sqrt(x*x+y*y)
