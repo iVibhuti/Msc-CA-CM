@@ -85,4 +85,4 @@ def getMatrixInverse(m):
                 [-1*m[1][0]/determinant, m[0][0]/determinant]]
 
 
-print("Inverse of matrix P:",getMatrixInverse(P))
+print("Inverse of eigenvector matrix:",getMatrixInverse(P))
