@@ -82,4 +82,5 @@ def read_csv(file_name):
     matrix = []
     for index in range(0,int(row)):
         matrix.append(list(map(int,file.readline().split(","))))
+    file.close()
     return matrix
