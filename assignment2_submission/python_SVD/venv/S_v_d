@@ -1,0 +1,106 @@
+# author : Rahul Matai
+# Dt:08-03-2020
+import numpy as np
+a=1;
+x = 0
+y = 1
+z = 1
+q1 = 1
+q2 = 1
+sqr_root1 = 1
+sqr_root2 = 1
+vmat = []
+vectorMatrix = []
+def eigenvalue(eig_val):
+    y = -(eig_val[x][x]) - (eig_val[x + 1][x + 1])
+    z = (eig_val[x][x] * eig_val[x + 1][x + 1]) - (eig_val[x + 1][x] * eig_val[x][x + 1])
+    d_Val = np.power(y, 2) - 4 * 1 * z
+    if(d_Val.__gt__(0)):
+        sqr_root1 = int((-y + np.sqrt(d_Val)) / (2 * 1))
+        sqr_root2 = int((-y - np.sqrt(d_Val)) / (2 * 1))
+        print("roots of the equation are ",sqr_root1,'and', sqr_root2)
+    else:
+        print("SVD nt possible")
+    limited_matrix = []
+    eig_v = eigenvector(eig_val, sqr_root1, sqr_root2)
+    if (sqr_root1.__gt__(sqr_root2)):
+        flag = 0
+        for i in range(0,2):
+            for j in range(0,2):
+                limited_matrix.append(eig_v[flag])
+                flag = flag + 2
+            vmat.append(limited_matrix)
+            limited_matrix = []
+            flag = 1
+    else:
+        flag = 2
+        for i in range(0,2):
+            for j in range(0,2):
+                vmat.append(eig_v[flag])
+                flag = flag - 2
+            vmat.append(limited_matrix)
+            limited_matrix = []
+            flag = 3
+    print("The Eigen Vector Matrix is : ")
+    print(vmat)
+    invr=inv(vmat)
+    print('the singular value deviation is ','value is',eig_v,'value of matrix is v',vmat,'inverse is',invr)
+#function to find the inverse of the matrix
+def inv(vm):
+    cofacto=[]
+    rows=1
+    cols=1
+    det=(vmat[x][x]*vmat[x+1][x+1])-(vmat[x][x+1]*vmat[x+1][x])
+    t=[]
+    for i in range(0,2):
+        for j in range(0,2):
+            val=(vmat[rows][cols])
+            if (i+j) % 2 != 0:      #checking for even
+                t.append(val*(-1))
+            else:
+                t.append(val)
+                cols=cols-1
+        rows=0
+        cols=1
+        cofacto.append(t)
+        t=[]
+    #swapping the values to adjust into the row
+    t= cofacto[x][x+1]
+    cofacto[x][x+1]=cofacto[x+1][x]
+    cofacto[x+1][x]=t
+    for i in range (0,2):
+        for j in range (0,2):
+            cofacto[i][j]=float(cofacto[i][j])/det
+    return cofacto
+# function to calculate eigen vectore which will take eigen value and the lembda (roots) which we find
+def eigenvector(eig_val, sqr_root1, sqr_root2):
+    q1 = eig_val[x][x] - sqr_root1
+    for i in range(0,2):
+        q2 = eig_val[x][1]
+        q2 = q1 / q2
+        q1 = 1
+        vectorMatrix.append(q1)
+        vectorMatrix.append(q2)
+        q1 = eig_val[x][x] - sqr_root2
+    return vectorMatrix
+
+
+
+if __name__ == "__main__":
+    st_martrix =[]
+    svd_mat = []
+matrix = []
+
+# opening the file
+f = open('input', "r")
+for i in range(0,2):
+    value = f.readline()
+    d_list = value.split(" ")
+
+    dt_val = []
+    for j in d_list:
+        dt_val.append(int(j))
+    matrix.append(dt_val)
+    dt_val = []
+print(matrix)
+eigenvalue(matrix)
