@@ -220,6 +220,11 @@ def check_squareness(A):
 
 
 def check_non_singular(A):
+    """
+    Check if matrix is non-singular.
+        :param A: The matrix to be checked
+        :return: determinant of the matrix if its non-singular
+    """
     det = determinant_recursive(A)
     if det != 0:
         return det
@@ -266,13 +271,17 @@ def invert_matrix(A, tol=None):
 
 
 def norm(x):
-    """Return the Euclidean norm of the vector x."""
+    """
+    Return the Euclidean norm of the vector x.
+    """
     return square_root(sum([x_i ** 2 for x_i in x]))
 
 
 def Q_i(Q_min, i, j, k):
-    """Construct the Q_t matrix by left-top padding the matrix Q
-    with elements from the identity matrix."""
+    """
+    Construct the Q_t matrix by left-top padding the matrix Q
+    with elements from the identity matrix.
+    """
     if i < k or j < k:
         return float(i == j)
     else:
@@ -280,6 +289,12 @@ def Q_i(Q_min, i, j, k):
 
 
 def cmp(a, b):
+    """
+    Compare two given objects.
+        :param a: object 1 
+        :param b: object 2
+        :return: compared object
+    """
     return (a > b) - (a < b)
 
 
@@ -476,8 +491,8 @@ def print_matrix(M):
 
 
 def main():
-    # file_input = input("Enter the file name with path : ")
-    file_input = "F:\matrix.txt"
+    file_input = input("Enter the file name with path : ")
+    # file_input = "F:\matrix.txt"
     matrix = read_matrix(file_input)
 
     e_values = eigen_values(qrFactorization(matrix))
